@@ -1270,6 +1270,61 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# CERTIFICATIONS SECTIONS
+----------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+.certifications {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.certifications .container {
+  max-width: 1200px;
+}
+
+.certifications .card {
+  margin: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.certifications .card:hover {
+  transform: scale(1.05);
+}
+
+.certifications .card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.certifications .card-body {
+  padding: 20px;
+}
+
+.certifications .card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.certifications .card-text {
+  font-size: 1rem;
+  color: #666;
+}
+
+.certifications .btn {
+  margin-top: 10px;
+  background-color: green;
+  border-color: green;
+  color: white;
+}
+
+.certifications .btn:hover {
+  background-color: gray;
+  border-color: gray;
 }
