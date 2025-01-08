@@ -1328,3 +1328,26 @@ section,
   background-color: gray;
   border-color: gray;
 }
+
+/* Decrease space between sections */
+#Certifications {
+  margin-bottom: 10px; /* Reduce the space at the bottom of Certifications */
+}
+
+#contact {
+  padding-top: 10px; /* Reduce the padding at the top of Contact section */
+}
+
+#Certifications {
+  padding-top: 10px; /* Reduce the space at the bottom of Certifications */
+}
+#resume {
+  padding-top: 10px; /* Reduce the space at the bottom of resume */
+}
+#about {
+  margin-bottom: px; /
+}
+#skills {
+  padding:5px; /* Reduce the space at the bottom of skills */
+}
+
