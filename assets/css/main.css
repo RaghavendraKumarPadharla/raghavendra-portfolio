@@ -1328,6 +1328,9 @@ section,
   background-color: gray;
   border-color: gray;
 }
+#Certifications .section-title h2 {
+  text-align: left;
+}
 
 /* Decrease space between sections */
 #Certifications {
