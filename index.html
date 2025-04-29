@@ -911,16 +911,16 @@
             </div>
           </div>
 
-         <div class="col-lg-7">
-  <form action="https://formsubmit.co/raghavendrapadharla@gmail.com" method="POST">
+         <!-- Contact Form Section -->
+<div class="col-lg-7">
+  <form action="https://formsubmit.co/raghavendrapadharla@gmail.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+
     <!-- Hidden fields for Formsubmit options -->
-   
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="https://raghavendrakumarpadharla.github.io/thank-you.html">
+    <input type="hidden" name="_next" value="https://raghavendrakumarpadharla.github.io/#thank-you">
 
     <div class="row gy-4">
-
       <div class="col-md-6">
         <label for="name-field" class="pb-2">Your Name</label>
         <input type="text" name="name" id="name-field" class="form-control" required>
@@ -942,7 +942,6 @@
       </div>
 
       <div class="col-md-12 text-center">
-        <!-- These are visual-only, they won’t function unless handled via JS -->
         <div class="loading" style="display: none;">Loading</div>
         <div class="error-message text-danger" style="display: none;"></div>
         <div class="sent-message text-success" style="display: none;">Your message has been sent. Thank you!</div>
@@ -951,10 +950,15 @@
           <i class="bi bi-send"></i> Send Message
         </button>
       </div>
-
     </div>
   </form>
-</div><!-- End Contact Form -->
+</div>
+
+<!-- Thank You Section -->
+<div id="thank-you" class="text-center" style="padding: 100px 0; display: none;">
+  <h2>Thank you!</h2>
+  <p>Your message has been sent successfully. I’ll get back to you soon.</p>
+</div>
 
         </div>
       </div>
