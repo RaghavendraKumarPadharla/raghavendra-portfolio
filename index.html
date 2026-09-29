@@ -766,54 +766,6 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-<box border radius="lg" padding={3} gap={1}>
-  <row align="center" gap={2}>
-    <icon name="file-code" color="#149ddd" size="lg"/>
-    **index.html**
-  </row>
-  <box padding={{left:4}} gap={1}>
-    <text color="secondary" size="sm">`<head>`</text>
-    <box border={{left:{size:2,color:"#16a34a"}}} padding={{left:3,y:1}} gap={1}>
-      <text size="sm">Existing styles and Bootstrap CSS</text>
-      <text size="sm" color="success" weight="medium">New sidebar collapse CSS</text>
-    </box>
-    <text color="secondary" size="sm">`</head>`</text>
-    <divider/>
-    <text size="sm">`<body class="index-page">`</text>
-    <box padding={{left:3}} gap={1}>
-      <text size="sm" weight="medium">`<header id="header">`</text>
-      <box padding={{left:3}} gap={1}>
-        <text size="sm">Existing mobile toggle</text>
-        <text color="success" size="sm" weight="medium">New desktop toggle button</text>
-        <text size="sm">RK initials</text>
-        <text size="sm">Existing social links</text>
-        <text size="sm">Existing navigation menu</text>
-      </box>
-      <text size="sm">`</header>`</text>
-      <divider/>
-      <text size="sm">`<main class="main">`</text>
-      <box padding={{left:3}} gap={1}>
-        <text size="sm">Hero section</text>
-        <text size="sm">About section</text>
-        <text size="sm">Skills section</text>
-        <text size="sm">Resume section</text>
-        <text size="sm">Projects section</text>
-        <text size="sm">Internships and Certifications</text>
-        <text size="sm">Contact section</text>
-      </box>
-      <text size="sm">`</main>`</text>
-      <text size="sm">Existing footer and vendor scripts</text>
-      <text size="sm">Existing `assets/js/main.js`</text>
-      <text color="success" size="sm" weight="medium">New desktop sidebar JavaScript</text>
-    </box>
-    <text size="sm">`</body>`</text>
-  </box>
-</box>
-
-<box border={{size:1,color:"#16a34a"}} radius="lg" padding={3} gap={2}>
-  <badge color="success">Expected behavior</badge>
-  
-</box>
 
 
     <style>
@@ -2657,6 +2609,118 @@ Strengthened skills in building user-friendly web interfaces and understanding f
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
+<!-- Desktop Sidebar Toggle -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const toggleButton = document.getElementById(
+    "sidebarCollapseToggle"
+  );
+
+  if (!toggleButton) return;
+
+  const toggleIcon = toggleButton.querySelector("i");
+
+  toggleButton.addEventListener("click", function () {
+
+    // Add or remove the collapsed class
+    const isCollapsed = document.body.classList.toggle(
+      "sidebar-collapsed"
+    );
+
+    // Update button accessibility
+    toggleButton.setAttribute(
+      "aria-expanded",
+      String(!isCollapsed)
+    );
+
+    toggleButton.setAttribute(
+      "aria-label",
+      isCollapsed ? "Expand sidebar" : "Collapse sidebar"
+    );
+
+    toggleButton.setAttribute(
+      "title",
+      isCollapsed ? "Expand sidebar" : "Collapse sidebar"
+    );
+
+    // Change the arrow icon
+    if (toggleIcon) {
+      toggleIcon.classList.toggle(
+        "bi-chevron-double-left",
+        !isCollapsed
+      );
+
+      toggleIcon.classList.toggle(
+        "bi-chevron-double-right",
+        isCollapsed
+      );
+    }
+
+  });
+
+});
+</script>
+```
+
+# Step 6: Final structure of your `index.html`
+
+Your existing file should now have this overall structure. The other sections of your portfolio remain unchanged.
+
+<box border radius="lg" padding={3} gap={1}>
+  <row align="center" gap={2}>
+    <icon name="file-code" color="#149ddd" size="lg"/>
+    **index.html**
+  </row>
+  <box padding={{left:4}} gap={1}>
+    <text color="secondary" size="sm">`<head>`</text>
+    <box border={{left:{size:2,color:"#16a34a"}}} padding={{left:3,y:1}} gap={1}>
+      <text size="sm">Existing styles and Bootstrap CSS</text>
+      <text size="sm" color="success" weight="medium">New sidebar collapse CSS</text>
+    </box>
+    <text color="secondary" size="sm">`</head>`</text>
+    <divider/>
+    <text size="sm">`<body class="index-page">`</text>
+    <box padding={{left:3}} gap={1}>
+      <text size="sm" weight="medium">`<header id="header">`</text>
+      <box padding={{left:3}} gap={1}>
+        <text size="sm">Existing mobile toggle</text>
+        <text color="success" size="sm" weight="medium">New desktop toggle button</text>
+        <text size="sm">RK initials</text>
+        <text size="sm">Existing social links</text>
+        <text size="sm">Existing navigation menu</text>
+      </box>
+      <text size="sm">`</header>`</text>
+      <divider/>
+      <text size="sm">`<main class="main">`</text>
+      <box padding={{left:3}} gap={1}>
+        <text size="sm">Hero section</text>
+        <text size="sm">About section</text>
+        <text size="sm">Skills section</text>
+        <text size="sm">Resume section</text>
+        <text size="sm">Projects section</text>
+        <text size="sm">Internships and Certifications</text>
+        <text size="sm">Contact section</text>
+      </box>
+      <text size="sm">`</main>`</text>
+      <text size="sm">Existing footer and vendor scripts</text>
+      <text size="sm">Existing `assets/js/main.js`</text>
+      <text color="success" size="sm" weight="medium">New desktop sidebar JavaScript</text>
+    </box>
+    <text size="sm">`</body>`</text>
+  </box>
+</box>
+
+<box border={{size:1,color:"#16a34a"}} radius="lg" padding={3} gap={2}>
+  <badge color="success">Expected behavior</badge>
+  - On desktop, the sidebar starts at 300px wide and displays your RK logo, social links and navigation labels.
+  - Click the double-arrow button to collapse it to 80px, showing only navigation icons.
+  - Click again to expand it.
+  - The main page content shifts smoothly to match the sidebar width.
+  - On mobile, the desktop toggle stays hidden and your existing mobile menu continues to work.
+</box>
+
+**Important:** Your current file already contains custom sidebar CSS inside the header. Keep the existing RK and social-link styling, but avoid adding duplicate rules for the new collapse behavior. After saving, refresh your browser with `Ctrl + F5` to load the latest CSS and JavaScript.
  
 
 </body>
