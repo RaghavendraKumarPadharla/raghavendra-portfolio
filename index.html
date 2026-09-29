@@ -572,12 +572,13 @@
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
 <!-- Desktop Sidebar Collapse Button -->
+
 <button
   id="sidebarCollapseToggle"
   class="sidebar-collapse-toggle"
   type="button"
+  onclick="toggleSidebar()"
   aria-label="Collapse sidebar"
-  aria-expanded="true"
   title="Collapse sidebar">
   <i class="bi bi-chevron-double-left"></i>
 </button>
@@ -713,86 +714,84 @@
 
     
 <!-- Desktop Sidebar Toggle -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
 
-  const toggleButton = document.getElementById(
-    "sidebarCollapseToggle"
+<script>
+function toggleSidebar() {
+  const body = document.body;
+  const button = document.getElementById("sidebarCollapseToggle");
+  const icon = button.querySelector("i");
+
+  const isCollapsed = body.classList.toggle("sidebar-collapsed");
+
+  button.setAttribute("aria-expanded", !isCollapsed);
+  button.setAttribute(
+    "aria-label",
+    isCollapsed ? "Expand sidebar" : "Collapse sidebar"
+  );
+  button.setAttribute(
+    "title",
+    isCollapsed ? "Expand sidebar" : "Collapse sidebar"
   );
 
-  if (!toggleButton) return;
-
-  const toggleIcon = toggleButton.querySelector("i");
-
-  toggleButton.addEventListener("click", function () {
-
-    // Add or remove the collapsed class
-    const isCollapsed = document.body.classList.toggle(
-      "sidebar-collapsed"
-    );
-
-    // Update button accessibility
-    toggleButton.setAttribute(
-      "aria-expanded",
-      String(!isCollapsed)
-    );
-
-    toggleButton.setAttribute(
-      "aria-label",
-      isCollapsed ? "Expand sidebar" : "Collapse sidebar"
-    );
-
-    toggleButton.setAttribute(
-      "title",
-      isCollapsed ? "Expand sidebar" : "Collapse sidebar"
-    );
-
-    // Change the arrow icon
-    if (toggleIcon) {
-      toggleIcon.classList.toggle(
-        "bi-chevron-double-left",
-        !isCollapsed
-      );
-
-      toggleIcon.classList.toggle(
-        "bi-chevron-double-right",
-        isCollapsed
-      );
-    }
-
-  });
-
-});
+  icon.className = isCollapsed
+    ? "bi bi-chevron-double-right"
+    : "bi bi-chevron-double-left";
+}
 </script>
 
 
 
 
     <style>
-      
-/* Sidebar Initials Logo */
-.profile-initials {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: #1b2635;
-  border: 8px solid #2c2f3f;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px auto 20px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  transition: all 0.3s ease;
-}
 
-.profile-initials:hover {
-  transform: scale(1.05);
-  background: #26364a;
+    
+/* Sidebar Initials Logo */     
+@media (min-width: 1200px) {
+  body #header {
+    width: 300px !important;
+    transition: width 0.3s ease;
+  }
+
+  body #main,
+  body main.main {
+    margin-left: 300px !important;
+    transition: margin-left 0.3s ease;
+  }
+
+  body.sidebar-collapsed #header {
+    width: 80px !important;
+  }
+
+  body.sidebar-collapsed #main,
+  body.sidebar-collapsed main.main {
+    margin-left: 80px !important;
+  }
+
+  body.sidebar-collapsed #header .profile-initials,
+  body.sidebar-collapsed #header .social-links {
+    display: none !important;
+  }
+
+  body.sidebar-collapsed #header .navmenu ul li a {
+    justify-content: center !important;
+    gap: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    font-size: 0 !important;
+  }
+
+  body.sidebar-collapsed #header .navmenu ul li a .navicon {
+    display: inline-block;
+    margin: 0 !important;
+    font-size: 22px !important;
+  }
+
+  body.sidebar-collapsed #header .sidebar-collapse-toggle {
+    right: 23px;
+  }
 }
+   
+
 
 
 
