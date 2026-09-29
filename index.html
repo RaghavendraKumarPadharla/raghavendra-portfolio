@@ -595,6 +595,75 @@
 
 
     <style>     
+
+      
+/* =====================================
+   RESTORE ROUND RK SIDEBAR LOGO
+===================================== */
+
+#header .profile-initials {
+    width: 150px !important;
+    height: 150px !important;
+    min-width: 150px !important;
+    max-width: 150px !important;
+
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    flex: 0 0 150px;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 15px auto 20px !important;
+    padding: 0 !important;
+
+    border: 9px solid #2c2f3f !important;
+    border-radius: 50% !important;
+
+    background-color: #1b2635 !important;
+    color: #ffffff !important;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px !important;
+    font-weight: 700 !important;
+    letter-spacing: 2px;
+
+    line-height: 1;
+    text-align: center;
+
+    overflow: hidden;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#header .profile-initials:hover {
+    transform: scale(1.05);
+    background-color: #26364a !important;
+}
+
+/* Keep sidebar content centered */
+@media (min-width: 1200px) {
+    #header {
+        align-items: center;
+    }
+
+    #header .social-links,
+    #header .navmenu {
+        width: 100%;
+    }
+}
+
+/* Smaller logo on mobile */
+@media (max-width: 1199px) {
+    #header .profile-initials {
+        width: 120px !important;
+        height: 120px !important;
+        min-width: 120px !important;
+        max-width: 120px !important;
+        flex-basis: 120px;
+        font-size: 30px !important;
+    }
+}
       .social-links {
         position: relative;
         display: flex;
