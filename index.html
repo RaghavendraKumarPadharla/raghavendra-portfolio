@@ -571,7 +571,16 @@
     </div>
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
-
+<!-- Desktop Sidebar Collapse Button -->
+<button
+  id="sidebarCollapseToggle"
+  class="sidebar-collapse-toggle"
+  type="button"
+  aria-label="Collapse sidebar"
+  aria-expanded="true"
+  title="Collapse sidebar">
+  <i class="bi bi-chevron-double-left"></i>
+</button>
    
     <!-- <div class="profile-img">
       <img src="profile.jpg" alt="" class="img-fluid rounded-circle">
@@ -589,6 +598,232 @@
 </div>
 
 
+<style>
+/* =====================================
+   DESKTOP SIDEBAR COLLAPSE
+===================================== */
+
+@media (min-width: 1200px) {
+
+  /* Expanded sidebar */
+  body #header {
+    width: 300px;
+    transition: width 0.3s ease;
+    overflow-x: hidden;
+  }
+
+  /* Main content */
+  body .main {
+    margin-left: 300px;
+    transition: margin-left 0.3s ease;
+  }
+
+  /* Collapse button */
+  .sidebar-collapse-toggle {
+    position: absolute;
+    top: 15px;
+    right: 12px;
+    z-index: 1002;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 6px;
+    background: #1b2635;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .sidebar-collapse-toggle:hover {
+    background: #149ddd;
+  }
+
+  .sidebar-collapse-toggle i {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Collapsed sidebar */
+  body.sidebar-collapsed #header {
+    width: 80px;
+  }
+
+  body.sidebar-collapsed .main {
+    margin-left: 80px;
+  }
+
+  /* Hide RK logo and social links */
+  body.sidebar-collapsed #header .profile-initials,
+  body.sidebar-collapsed #header .profile-img,
+  body.sidebar-collapsed #header .logo,
+  body.sidebar-collapsed #header .social-links {
+    display: none !important;
+  }
+
+  /* Center navigation icons */
+  body.sidebar-collapsed #header .navmenu ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 15px 0;
+    gap: 0;
+    font-size: 0;
+    white-space: nowrap;
+  }
+
+  /* Show only the icons */
+  body.sidebar-collapsed #header .navmenu .navicon {
+    display: inline-block;
+    width: 24px;
+    min-width: 24px;
+    margin: 0;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  body.sidebar-collapsed #header .navmenu ul li {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Move toggle button to the center */
+  body.sidebar-collapsed .sidebar-collapse-toggle {
+    right: 23px;
+  }
+
+  /* Reverse arrow when collapsed */
+  body.sidebar-collapsed .sidebar-collapse-toggle i {
+    transform: rotate(180deg);
+  }
+}
+
+/* Hide desktop button on mobile */
+@media (max-width: 1199px) {
+  .sidebar-collapse-toggle {
+    display: none !important;
+  }
+}
+</style>
+
+
+
+    
+<!-- Desktop Sidebar Toggle -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const toggleButton = document.getElementById(
+    "sidebarCollapseToggle"
+  );
+
+  if (!toggleButton) return;
+
+  const toggleIcon = toggleButton.querySelector("i");
+
+  toggleButton.addEventListener("click", function () {
+
+    // Add or remove the collapsed class
+    const isCollapsed = document.body.classList.toggle(
+      "sidebar-collapsed"
+    );
+
+    // Update button accessibility
+    toggleButton.setAttribute(
+      "aria-expanded",
+      String(!isCollapsed)
+    );
+
+    toggleButton.setAttribute(
+      "aria-label",
+      isCollapsed ? "Expand sidebar" : "Collapse sidebar"
+    );
+
+    toggleButton.setAttribute(
+      "title",
+      isCollapsed ? "Expand sidebar" : "Collapse sidebar"
+    );
+
+    // Change the arrow icon
+    if (toggleIcon) {
+      toggleIcon.classList.toggle(
+        "bi-chevron-double-left",
+        !isCollapsed
+      );
+
+      toggleIcon.classList.toggle(
+        "bi-chevron-double-right",
+        isCollapsed
+      );
+    }
+
+  });
+
+});
+</script>
+```
+
+# Step 6: Final structure of your `index.html`
+
+Your existing file should now have this overall structure. The other sections of your portfolio remain unchanged.
+
+<box border radius="lg" padding={3} gap={1}>
+  <row align="center" gap={2}>
+    <icon name="file-code" color="#149ddd" size="lg"/>
+    **index.html**
+  </row>
+  <box padding={{left:4}} gap={1}>
+    <text color="secondary" size="sm">`<head>`</text>
+    <box border={{left:{size:2,color:"#16a34a"}}} padding={{left:3,y:1}} gap={1}>
+      <text size="sm">Existing styles and Bootstrap CSS</text>
+      <text size="sm" color="success" weight="medium">New sidebar collapse CSS</text>
+    </box>
+    <text color="secondary" size="sm">`</head>`</text>
+    <divider/>
+    <text size="sm">`<body class="index-page">`</text>
+    <box padding={{left:3}} gap={1}>
+      <text size="sm" weight="medium">`<header id="header">`</text>
+      <box padding={{left:3}} gap={1}>
+        <text size="sm">Existing mobile toggle</text>
+        <text color="success" size="sm" weight="medium">New desktop toggle button</text>
+        <text size="sm">RK initials</text>
+        <text size="sm">Existing social links</text>
+        <text size="sm">Existing navigation menu</text>
+      </box>
+      <text size="sm">`</header>`</text>
+      <divider/>
+      <text size="sm">`<main class="main">`</text>
+      <box padding={{left:3}} gap={1}>
+        <text size="sm">Hero section</text>
+        <text size="sm">About section</text>
+        <text size="sm">Skills section</text>
+        <text size="sm">Resume section</text>
+        <text size="sm">Projects section</text>
+        <text size="sm">Internships and Certifications</text>
+        <text size="sm">Contact section</text>
+      </box>
+      <text size="sm">`</main>`</text>
+      <text size="sm">Existing footer and vendor scripts</text>
+      <text size="sm">Existing `assets/js/main.js`</text>
+      <text color="success" size="sm" weight="medium">New desktop sidebar JavaScript</text>
+    </box>
+    <text size="sm">`</body>`</text>
+  </box>
+</box>
+
+<box border={{size:1,color:"#16a34a"}} radius="lg" padding={3} gap={2}>
+  <badge color="success">Expected behavior</badge>
+  - On desktop, the sidebar starts at 300px wide and displays your RK logo, social links and navigation labels.
+  - Click the double-arrow button to collapse it to 80px, showing only navigation icons.
+  - Click again to expand it.
+  - The main page content shifts smoothly to match the sidebar width.
+  - On mobile, the desktop toggle stays hidden and your existing mobile menu continues to work.
+</box>
+
+**Important:** Your current file already contains custom sidebar CSS inside the header. Keep the existing RK and social-link styling, but avoid adding duplicate rules for the new collapse behavior. After saving, refresh your browser with `Ctrl + F5` to load the latest CSS and JavaScript.
     
 
     <style>
